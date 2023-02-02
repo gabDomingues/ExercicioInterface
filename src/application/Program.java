@@ -6,6 +6,9 @@ import java.util.Locale;
 import java.util.Scanner;
 
 import model.entities.Contrato;
+import model.entities.Parcelamento;
+import model.services.ServicoContrato;
+import model.services.ServicoPayPal;
 
 public class Program {
 
@@ -19,13 +22,20 @@ public class Program {
 		System.out.print("Numero: ");
 		int numeroContrato = sc.nextInt();
 		System.out.print("Data (dd/MM/yyyy): ");
-		LocalDate data = LocalDate.parse(sc.nextLine(), fmt);
+		LocalDate data = LocalDate.parse(sc.next(), fmt);
 		System.out.print("Valor do contrato: ");
 		double valor = sc.nextDouble();
+
+		Contrato contrato = new Contrato(numeroContrato, data, valor);
+		
 		System.out.print("Entre com o numero de parcelas: ");
 		int parcelas = sc.nextInt();
 		
-		Contrato contrato = new Contrato(numeroContrato, data, valor);
+		ServicoContrato servico = new ServicoContrato(new ServicoPayPal());
+		servico.processarContrato(contrato, parcelas);
+		for(Parcelamento p : contrato.getParcelas()) {
+			System.out.println(p);
+		}
 		
 		sc.close();
 	}

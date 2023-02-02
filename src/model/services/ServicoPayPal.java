@@ -3,15 +3,15 @@ package model.services;
 public class ServicoPayPal implements ServicoPagamentoOnline{
 
 	@Override
-	public double taxa(double valor) {
-		
-		return 0;
+	public double taxaPagamento(double valor) {
+		double taxa = 0.02;
+		return (valor + (valor*taxa));
 	}
 
 	@Override
 	public double juros(double valor, int meses) {
 		
-		return 0;
+		return (valor + (valor*0.01*meses));
 	}
 	
 }

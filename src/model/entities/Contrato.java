@@ -14,7 +14,6 @@ public class Contrato {
 	private List<Parcelamento> parcelas = new ArrayList<>();
 
 	public Contrato(Integer numeroContrato, LocalDate dataContrato, Double valorContrato) {
-		super();
 		this.numeroContrato = numeroContrato;
 		this.dataContrato = dataContrato;
 		this.valorContrato = valorContrato;
@@ -48,10 +47,5 @@ public class Contrato {
 		return parcelas;
 	}
 
-	public void setParcelas(List<Parcelamento> parcelas) {
-		this.parcelas = parcelas;
-	}
-	
-	
 	
 }
